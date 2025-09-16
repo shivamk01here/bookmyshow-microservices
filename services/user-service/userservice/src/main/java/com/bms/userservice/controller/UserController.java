@@ -3,25 +3,29 @@ package com.bms.userservice.controller;
 
 import com.bms.userservice.model.User;
 import com.bms.userservice.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import io.swagger.v3.oas.annotations.Operation;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
-    private UserService userService;
+
+    private final UserService userService;
 
     @Operation(summary = "Register new user")
     @PostMapping("/register")
-    public User register(@RequestBody User user) {
-        return userService.register(user);
+    public ResponseEntity<User> register(@RequestBody User user) {
+        User savedUser = userService.register(user);
+        return ResponseEntity.ok(savedUser);
     }
 
     @Operation(summary = "Find user by email")
     @GetMapping("/find")
-    public User findByEmail(@RequestParam String email) {
-        return userService.findByEmail(email);
+    public ResponseEntity<User> findByEmail(@RequestParam String email) {
+        User user = userService.findByEmail(email);
+        return ResponseEntity.ok(user);
     }
 }
