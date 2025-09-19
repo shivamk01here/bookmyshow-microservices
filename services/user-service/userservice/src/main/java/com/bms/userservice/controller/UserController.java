@@ -1,4 +1,3 @@
-// src/main/java/com/bms/userservice/controller/UserController.java
 package com.bms.userservice.controller;
 
 import com.bms.userservice.model.User;

@@ -1,16 +1,15 @@
-// src/main/java/com/bms/userservice/model/User.java
 package com.bms.userservice.model;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "users") // Explicit table name to avoid conflicts with SQL reserved word "user"
+@Table(name = "users") 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder // Makes object creation easier and cleaner
+@Builder
 public class User {
 
     @Id
